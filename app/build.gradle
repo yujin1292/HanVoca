@@ -12,7 +12,7 @@ apply plugin: 'realm-android'
 android {
     compileSdkVersion 28
     defaultConfig {
-        applicationId "com.example.onejo.hanvoca_v1_release"
+        applicationId "com.example.onejo.hanvoca"
         minSdkVersion 26
         targetSdkVersion 28
         versionCode 1

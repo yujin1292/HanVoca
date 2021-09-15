@@ -1,33 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="com.example.onejo.hanvoca_v1_release">
+          package="com.example.hanvoca">
 
     <application
-            android:name="hanvoca_v1_release.MyApplication"
+            android:name=".MyApplication"
             android:allowBackup="true"
             android:icon="@mipmap/ic_launcher"
             android:label="HanVoca"
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
-        <activity android:name="hanvoca_v1_release.AddWordActivity">
+        <activity android:name=".AddWordActivity">
         </activity>
-        <activity android:name="hanvoca_v1_release.AddVocaActivity">
+        <activity android:name=".AddVocaActivity">
         </activity>
-        <activity android:name="hanvoca_v1_release.DelWordActivity">
+        <activity android:name=".DelWordActivity">
         </activity>
-        <activity android:name="hanvoca_v1_release.TestActivity">
+        <activity android:name=".TestActivity">
         </activity>
-        <activity android:name="hanvoca_v1_release.Test_setDetailActivity">
+        <activity android:name=".Test_setDetailActivity">
         </activity>
-        <activity android:name="hanvoca_v1_release.Test_SelectVocaActivity">
+        <activity android:name=".Test_SelectVocaActivity">
         </activity>
-        <activity android:name="hanvoca_v1_release.DelVocaActivity">
+        <activity android:name=".DelVocaActivity">
         </activity>
-        <activity android:name="hanvoca_v1_release.getWordActivity">
+        <activity android:name=".getWordActivity">
         </activity>
 
-        <activity android:name="hanvoca_v1_release.SplashActivity"
+        <activity android:name=".SplashActivity"
                   android:screenOrientation="portrait"
                   android:theme="@style/SplashTheme">
             <intent-filter>
@@ -35,17 +35,17 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name="hanvoca_v1_release.ShowVocaActivity">
+        <activity android:name=".ShowVocaActivity">
         </activity>
-        <activity android:name="hanvoca_v1_release.SelectModeActivity">
+        <activity android:name=".SelectModeActivity">
         </activity>
-        <activity android:name="hanvoca_v1_release.ShowBlinkerModeActivity">
+        <activity android:name=".ShowBlinkerModeActivity">
         </activity>
-        <activity android:name="hanvoca_v1_release.ShowUserModeActivity">
+        <activity android:name=".ShowUserModeActivity">
         </activity>
-        <activity android:name="hanvoca_v1_release.ResultActivity">
+        <activity android:name=".ResultActivity">
         </activity>
-        <activity android:name="hanvoca_v1_release.MainActivity">
+        <activity android:name=".MainActivity">
 
         </activity>
     </application>

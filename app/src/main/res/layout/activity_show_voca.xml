@@ -6,7 +6,7 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context="hanvoca_v1_release.MainActivity" android:orientation="vertical" android:layout_weight="4">
+        tools:context=".MainActivity" android:orientation="vertical" android:layout_weight="4">
 
     <TextView
             android:layout_width="match_parent"
