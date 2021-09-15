@@ -28,8 +28,7 @@ class DelVocaAdapter (realmCollection: OrderedRealmCollection<VocaDB>):RealmBase
 
         return view
     }
-}
-
-class DViewHolder(view:View){
-    val vocaTextView: TextView = view.findViewById(R.id.DelDel)
+    class DViewHolder(view:View){
+        val vocaTextView: TextView = view.findViewById(R.id.DelDel)
+    }
 }

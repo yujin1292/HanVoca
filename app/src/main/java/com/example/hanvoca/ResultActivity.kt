@@ -2,9 +2,6 @@ package com.example.hanvoca
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import com.example.hanvoca.WordDB
-import com.example.hanvoca.resultAdapter
-import com.example.hanvoca.R
 import io.realm.Realm
 import io.realm.kotlin.where
 import kotlinx.android.synthetic.main.activity_result.*
@@ -29,7 +26,7 @@ class ResultActivity : AppCompatActivity() {
         var wrongList = intent.getStringArrayListExtra("list")
 
 
-        var ResultAdapter = resultAdapter()
+        var ResultAdapter = ResultAdapter()
         for( item in wrongList){
             var temp = realm.where<WordDB>().equalTo("word",item).findFirst()
             ResultAdapter.addItem(temp?.word,temp?.mean)

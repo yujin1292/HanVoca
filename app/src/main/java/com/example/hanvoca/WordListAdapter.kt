@@ -32,11 +32,10 @@ class WordListAdapter(realmResult:OrderedRealmCollection<WordDB>):RealmBaseAdapt
         return view
 
     }
-
+    class WviewHolder(view: View){
+        val wordTextView:TextView = view.findViewById(R.id.Eng)
+        val meanTextView:TextView = view.findViewById(R.id.Kor)
+    }
 
 }
 
-class WviewHolder(view: View){
-    val wordTextView:TextView = view.findViewById(R.id.Eng)
-    val meanTextView:TextView = view.findViewById(R.id.Kor)
-}

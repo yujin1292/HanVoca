@@ -5,7 +5,6 @@ import android.content.res.AssetManager
 import android.os.Bundle
 import android.view.View
 import android.widget.AdapterView
-import com.example.hanvoca.R
 import io.realm.Realm
 import io.realm.kotlin.createObject
 import io.realm.kotlin.where
@@ -22,7 +21,7 @@ class MainActivity : BaseActivity()  {
 
 
     val realm = Realm.getDefaultInstance()
-    var readfile = readFile()
+    var readfile = TextReader()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

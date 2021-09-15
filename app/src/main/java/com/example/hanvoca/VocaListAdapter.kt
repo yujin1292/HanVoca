@@ -31,8 +31,7 @@ class VocaListAdapter (realmResult:OrderedRealmCollection<VocaDB>):RealmBaseAdap
 
         return view
     }
-}
-
-class ViewHolder(view:View){
-    val vocaTextView:TextView = view.findViewById(R.id.VocaName)
+    class ViewHolder(view:View){
+        val vocaTextView:TextView = view.findViewById(R.id.VocaName)
+    }
 }
