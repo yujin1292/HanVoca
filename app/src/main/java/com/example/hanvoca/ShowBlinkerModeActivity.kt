@@ -35,9 +35,7 @@ class ShowBlinkerModeActivity : BaseActivity() {
         showBlinkerMode();
 
         exitbutton.setOnClickListener() {
-            var intent = Intent(this, ShowVocaActivity::class.java)
-            intent.putExtra("vocaname", VocaName)
-            startActivity(intent)
+            finish()
         }
     }
 

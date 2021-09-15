@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.example.hanvoca.CheckableLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                                    xmlns:app="http://schemas.android.com/apk/res-auto"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="90dp"
-                                    android:minHeight="80dp"
-
-
-                                    android:layout_marginLeft="10dp"
-                                    android:layout_marginTop="10dp"
-                                    android:layout_marginRight="10dp" android:background="@drawable/vocaimage" android:descendantFocusability="blocksDescendants">
+        android:layout_width="wrap_content"
+        android:layout_height="140dp"
+        android:minHeight="80dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="10dp"
+        android:background="@drawable/vocaimage"
+        android:descendantFocusability="blocksDescendants">
 
     <TextView
             android:id="@+id/DelDel"
@@ -22,14 +21,19 @@
             android:text="아진짜짜증나"
             android:textSize="30sp"
             android:layout_alignParentTop="true"
-            android:layout_marginTop="10dp"/>
+            android:layout_marginTop="10dp" />
+
     <CheckBox
             android:layout_width="wrap_content"
-            android:layout_height="match_parent" android:id="@+id/checkBox1" android:layout_marginEnd="-49dp"
-            android:layout_alignEnd="@+id/DelDel" android:layout_toEndOf="@+id/DelDel"
-            android:layout_marginStart="1dp" android:buttonTint="@color/colorPrimary"
+            android:layout_height="match_parent"
+            android:id="@+id/checkBox1"
+            android:layout_marginEnd="-49dp"
+            android:layout_alignEnd="@+id/DelDel"
+            android:layout_toEndOf="@+id/DelDel"
+            android:layout_marginStart="1dp"
+            android:buttonTint="@color/colorPrimary"
             android:focusable="false"
-            android:clickable="false"/>
+            android:clickable="false" />
 
 
 </com.example.hanvoca.CheckableLayout>

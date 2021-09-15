@@ -19,8 +19,8 @@ class TestSelectVocaActivity : AppCompatActivity() {
         var dbResults = realm.where<VocaDB>().findAll()
         val vocaAdapter = VocaListAdapter(dbResults)
 
-        VocaList.adapter = vocaAdapter
-        VocaList.onItemClickListener =
+        vocaList.adapter = vocaAdapter
+        vocaList.onItemClickListener =
             AdapterView.OnItemClickListener { _, _, position, _ ->
                 var vocaInfo = vocaAdapter.getItem(position)
                 var vocaname = vocaInfo?.name

@@ -38,21 +38,18 @@ class ShowVocaActivity : BaseActivity() {
                 startActivity(intent)
             }
 
+        WordList.onItemLongClickListener = AdapterView.OnItemLongClickListener{ _,_,_,_ ->
+            var intent = Intent(this, DelWordActivity::class.java)
+            intent.putExtra("vocaname", vocaName)
+            startActivity(intent)
+
+            true
+        }
+
         floatingAddActionButton.setOnClickListener {
             val intent = Intent(this, AddWordActivity::class.java)
             intent.putExtra("vocaname", vocaName)
             startActivity(intent)
-        }
-
-        floatingDelActionButton.setOnClickListener() {
-            var wordlist = realm.where<WordDB>().equalTo("voca", vocaName).findAll()
-            if (wordlist.size <= 0) {
-                alert("삭제할 단어가 없습니다.") { yesButton {} }.show()
-            } else {
-                var intent = Intent(this, DelWordActivity::class.java)
-                intent.putExtra("vocaname", vocaName)
-                startActivity(intent)
-            }
         }
     }
 

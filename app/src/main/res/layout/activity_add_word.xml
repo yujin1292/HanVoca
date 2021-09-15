@@ -42,16 +42,21 @@
             app:layout_constraintBottom_toBottomOf="@+id/imageView5" android:id="@+id/linearLayout3"
             android:layout_marginBottom="8dp" app:layout_constraintStart_toStartOf="parent"
             android:layout_marginStart="8dp" app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp">
-        <Button
-                android:text="추가"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" android:id="@+id/addWordBtn" android:layout_weight="1"
-                android:background="@drawable/buttonshape" android:textSize="15sp"/>
+
         <Button
                 android:text="취소"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" android:id="@+id/cancelWordBtn" android:layout_weight="1"
                 android:background="@drawable/buttonshape" android:textSize="15sp"/>
+
+        <Button
+                android:text="추가"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/addWordBtn"
+                android:layout_weight="1"
+                android:background="@drawable/buttonshape"
+                android:textSize="15sp" />
     </LinearLayout>
     <TextView
             android:text="ENTER THE WORD"

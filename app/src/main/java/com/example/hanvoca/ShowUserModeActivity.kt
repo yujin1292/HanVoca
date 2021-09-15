@@ -49,21 +49,16 @@ class ShowUserModeActivity : BaseActivity(){
         wordtext.text = wordlist.get(i).word
         meantext.text = wordlist.get(i).mean
 
-        prevBtn.setOnClickListener(){
+        prevBtn.setOnClickListener{
             i = setPrev(i,wordlist)
         }
 
-        nextBtn.setOnClickListener(){view->
+        nextBtn.setOnClickListener{view->
             i = setNext(i,wordlist,numOfWords)
-
         }
 
-        exitBtn.setOnClickListener(){view->
-            var intent = Intent(this, ShowVocaActivity::class.java)
-            intent.putExtra("vocaname",VocaName)
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-            startActivity(intent)
-
+        exitBtn.setOnClickListener{view->
+            finish()
         }
     }
 

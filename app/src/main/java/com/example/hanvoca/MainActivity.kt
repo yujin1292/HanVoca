@@ -38,25 +38,23 @@ class MainActivity : BaseActivity() {
         }
 
         val rcvAdapter = VocaListAdapter(realmResults)
-        VocaList.adapter = rcvAdapter
+        vocaList.adapter = rcvAdapter
 
-        VocaList.onItemClickListener = AdapterView.OnItemClickListener { _, _, position, _ ->
+        vocaList.onItemClickListener = AdapterView.OnItemClickListener { _, _, position, _ ->
             val intent = Intent(this, ShowVocaActivity::class.java)
             var vocaInfo = rcvAdapter.getItem(position)
             var vocaname = vocaInfo?.name
             intent.putExtra("vocaname", vocaname)
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
             startActivity(intent)
         }
 
-        delVocaBtn.setOnClickListener {
+        vocaList.onItemLongClickListener = AdapterView.OnItemLongClickListener { _, _, _, _->
             var vocalist = realm.where<VocaDB>().findAll()
-            if (vocalist.size == 0) {
-                alert("삭제할 단어장이 없습니다.") { yesButton { } }.show()
-            } else {
+            if (vocalist.size != 0) {
                 var intent = Intent(this, DelVocaActivity::class.java)
                 startActivity(intent)
-            }
+                true
+            } else false
 
         }
 
