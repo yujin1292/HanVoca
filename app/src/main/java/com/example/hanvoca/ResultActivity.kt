@@ -9,20 +9,16 @@ import kotlinx.android.synthetic.main.activity_result.*
 
 class ResultActivity : AppCompatActivity() {
 
-    val realm = Realm.getDefaultInstance() //인스턴스 얻기
-
+    val realm: Realm = Realm.getDefaultInstance() //인스턴스 얻기
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_result)
 
-        //점수 가져와버리기~
         var score = intent.getIntExtra("score",0)
         var maxscore = intent.getIntExtra("numofquiz",0)
         scoreText.text = "$score / $maxscore"
 
-
-        //안될거같아요 고쳐야하는ㄴ데...................
         var wrongList = intent.getStringArrayListExtra("list")
 
 
@@ -31,12 +27,7 @@ class ResultActivity : AppCompatActivity() {
             var temp = realm.where<WordDB>().equalTo("word",item).findFirst()
             ResultAdapter.addItem(temp?.word,temp?.mean)
         }
-
-
         wrongListView.adapter = ResultAdapter
-
-        //var listview_adapter = ArrayAdapter(this,android.R.layout.simple_list_item_1, wrongList)
-       // wrongListView.adapter = listview_adapter
 
         exitBtn.setOnClickListener{
             finish()

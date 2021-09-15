@@ -1,4 +1,4 @@
-package com.example.onejo.hanvoca
+package com.example.hanvoca
 
 import org.junit.Test
 

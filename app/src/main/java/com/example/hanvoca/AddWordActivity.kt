@@ -1,8 +1,6 @@
 package com.example.hanvoca
 
 import android.os.Bundle
-
-import com.example.hanvoca.R
 import io.realm.Realm
 import io.realm.kotlin.createObject
 import io.realm.kotlin.where
@@ -11,103 +9,68 @@ import org.jetbrains.anko.alert
 import org.jetbrains.anko.noButton
 import org.jetbrains.anko.yesButton
 
-class AddWordActivity : BaseActivity(){
+class AddWordActivity : BaseActivity() {
 
-    val realm = Realm.getDefaultInstance()
+    val realm: Realm = Realm.getDefaultInstance()
 
-    var vocaName : String = " "
-    var mean : String = " "
-    var word : String = " "
-
+    var vocaName: String = " "
+    var mean: String = " "
+    var word: String = " "
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_word)
-
         actList.add(this)
 
         vocaName = intent.getStringExtra("vocaname")
-        var valid:Boolean = true
+        var valid: Boolean = true
 
-        word =   wordEditText.text.toString()
-        mean =  meanEditText.text.toString()
+        word = wordEditText.text.toString()
+        mean = meanEditText.text.toString()
 
+        addWordBtn.setOnClickListener {
+            word = wordEditText.text.toString()
+            mean = meanEditText.text.toString()
 
-        addWordBtn.setOnClickListener {view->
+            valid = word.all { it.isLetter() || it == ' ' || it == '-' }
 
-            word =   wordEditText.text.toString()
-            mean =  meanEditText.text.toString()
-
-
-            for(c in word){
-                if(c.isUpperCase()||c.isLowerCase()||c==' '||c=='-')
-                    valid = true
-                else{
-                    valid = false
-                    break
-                }
-            }
-
-            if(word.length <= 0){
-                alert("단어를 입력해주세요") {
-                    yesButton { }
-                }.show()
-            }
-            else if(mean.length <= 0){
-                alert("뜻을 입력해주세요") {
-                    yesButton { }
-                }.show()
-            }
-            else if(valid==false){
-                alert("단어에는 영어, 공백, 특수기호 '-'만 입력할 수 있습니다.") {
-                    yesButton { }
-                }.show()
-            }
-            else{
-
-                if(checkSameWord(word)){
+            if (word.isEmpty()) {
+                alert("단어를 입력해주세요") { yesButton { } }.show()
+            } else if (mean.isEmpty()) {
+                alert("뜻을 입력해주세요") { yesButton { } }.show()
+            } else if (!valid) {
+                alert("단어에는 영어, 공백, 특수기호 '-'만 입력할 수 있습니다.") { yesButton { } }.show()
+            } else {
+                if (checkSameWord(word)) {
                     alert("이미 존재하는 단어입니다.\n계속 진행하시겠습니까?") {
-                        yesButton {
-                            addWord(vocaName, word, mean)
-                        }
+                        yesButton { addWord(vocaName, word, mean) }
                         noButton {}
                     }.show()
-                }
-                else
-                    addWord(vocaName, word, mean)
+                } else addWord(vocaName, word, mean)
             }
         }
-        cancelWordBtn.setOnClickListener {view->
-            finish()
-        }
+        cancelWordBtn.setOnClickListener { finish() }
     }
-    private fun addWord(vocaname:String, word : String, mean : String){
+
+    private fun addWord(vocaName: String, word: String, mean: String) {
 
         realm.beginTransaction()
 
         val newWord = realm.createObject<WordDB>(nextIndex())
-
-        newWord.word = word
-
-        newWord.mean = mean
-
-        newWord.voca = vocaname
-
-
-        val updatevoca = realm.where<VocaDB>().equalTo("name",vocaname).findFirst()!!
-        updatevoca.numOfWords = updatevoca.numOfWords + 1
-
+        newWord.apply {
+            this.word = word
+            this.mean = mean
+            this.voca = vocaName
+        }
+        val updateVoca = realm.where<VocaDB>().equalTo("name", vocaName).findFirst()!!
+        updateVoca.numOfWords = updateVoca.numOfWords + 1
         realm.commitTransaction() //트랜잭션 종료
-
         finish()
-
     }
 
-    private  fun nextIndex():Int{
-        val maxid = realm.where<WordDB>().max("index")
-        if(maxid!=null){
-            return maxid.toInt()+1
-        }
+    private fun nextIndex(): Int {
+        val maxId = realm.where<WordDB>().max("index")
+        if (maxId != null) return maxId.toInt() + 1
         return 0
     }
 
@@ -117,14 +80,6 @@ class AddWordActivity : BaseActivity(){
         realm.close()
     }
 
-    fun checkSameWord(word :String):Boolean{
-        var size = realm.where<WordDB>().equalTo("word",word).findAll().size
+    private fun checkSameWord(word: String) = realm.where<WordDB>().equalTo("word", word).findAll().size > 0
 
-        if(size > 0)
-            return true
-        else
-            return false
-
-
-    }
 }

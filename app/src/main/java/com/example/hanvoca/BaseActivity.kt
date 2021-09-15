@@ -8,9 +8,8 @@ open class BaseActivity : AppCompatActivity() {
     var actList = ArrayList<Activity>()
 
     fun actFinish() {
-        for (i in actList)
-            i.finish()
-
+        for (activity in actList)
+            activity.finish()
         finish()
     }
 }

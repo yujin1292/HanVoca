@@ -3,7 +3,7 @@
           package="com.example.hanvoca">
 
     <application
-            android:name=".MyApplication"
+            android:name=".Hanvoca"
             android:allowBackup="true"
             android:icon="@mipmap/ic_launcher"
             android:label="HanVoca"
@@ -18,13 +18,13 @@
         </activity>
         <activity android:name=".TestActivity">
         </activity>
-        <activity android:name=".Test_setDetailActivity">
+        <activity android:name=".TestSetDetailActivity">
         </activity>
-        <activity android:name=".Test_SelectVocaActivity">
+        <activity android:name=".TestSelectVocaActivity">
         </activity>
         <activity android:name=".DelVocaActivity">
         </activity>
-        <activity android:name=".getWordActivity">
+        <activity android:name=".GetWordActivity">
         </activity>
 
         <activity android:name=".SplashActivity"

@@ -8,6 +8,4 @@ open class WordDB (
     var word:String =" ",
     var mean:String =" ",
     var voca:String =" "
-): RealmObject(){
-
-}
+): RealmObject()

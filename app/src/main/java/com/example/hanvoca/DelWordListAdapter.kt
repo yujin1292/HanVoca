@@ -4,7 +4,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import com.example.hanvoca.R
 import io.realm.OrderedRealmCollection
 import io.realm.RealmBaseAdapter
 
@@ -12,16 +11,16 @@ class DelWordListAdapter (realmCollection: OrderedRealmCollection<WordDB>): Real
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
 
-        val vh: DwviewHolder
+        val vh: DwViewHolder
         val view: View
 
         if (convertView == null) {
             view = LayoutInflater.from(parent?.context).inflate(R.layout.checkword, parent, false)
-            vh = DwviewHolder(view)
+            vh = DwViewHolder(view)
             view.tag = vh
         } else {
             view = convertView
-            vh = view.tag as DwviewHolder
+            vh = view.tag as DwViewHolder
         }
 
         if (adapterData != null) {
@@ -33,7 +32,7 @@ class DelWordListAdapter (realmCollection: OrderedRealmCollection<WordDB>): Real
         return view
     }
 
-    class DwviewHolder(view: View){
+    class DwViewHolder(view: View){
         val wordTextView: TextView = view.findViewById(R.id.DelEng2)
         val meanTextView: TextView = view.findViewById(R.id.Kor2)
     }

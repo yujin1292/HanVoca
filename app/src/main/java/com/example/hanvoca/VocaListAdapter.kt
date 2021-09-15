@@ -26,9 +26,6 @@ class VocaListAdapter (realmResult:OrderedRealmCollection<VocaDB>):RealmBaseAdap
             val item = adapterData!![position]
             vh.vocaTextView.text = item.name
         }
-
-
-
         return view
     }
     class ViewHolder(view:View){

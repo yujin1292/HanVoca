@@ -13,7 +13,7 @@ import org.jetbrains.anko.yesButton
 
 class DelWordActivity : BaseActivity() {
 
-    val realm = Realm.getDefaultInstance()
+    val realm: Realm = Realm.getDefaultInstance()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

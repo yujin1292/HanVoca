@@ -10,10 +10,9 @@ import org.jetbrains.anko.alert
 import org.jetbrains.anko.noButton
 import org.jetbrains.anko.yesButton
 
-
 class DelVocaActivity : BaseActivity() {
 
-    var realm = Realm.getDefaultInstance()
+    var realm: Realm = Realm.getDefaultInstance()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,49 +25,46 @@ class DelVocaActivity : BaseActivity() {
         DelVocaList.adapter = rcvAdapter
         DelVocaList.choiceMode = ListView.CHOICE_MODE_MULTIPLE
 
-       delBtn.setOnClickListener {
+        delBtn.setOnClickListener {
 
-           var checkeditems = getCheckedVoca()
-           var cnt = rcvAdapter.count
+            var checkeditems = getCheckedVoca()
+            var cnt = rcvAdapter.count
 
-           if(checkeditems.size()<=0){
-               alert("삭제할 단어장을 선택해주세요") {
-                   yesButton {}
-               }.show()
-           }
-           else {
-               alert("정말 삭제하시겠습니까?") {
-                   yesButton {
-                       for (i in cnt - 1 downTo 0 step 1) {
-                           if (checkeditems.get(i)) {
-                               var delvocaInfo = rcvAdapter.getItem(i)
-                               var delvocaname = delvocaInfo?.name
-                               if (delvocaname != null)
-                                   delVoca(delvocaname)
-                           }
-                       }
+            if (checkeditems.size() <= 0) {
+                alert("삭제할 단어장을 선택해주세요") { yesButton {} }.show()
+            } else {
+                alert("정말 삭제하시겠습니까?") {
+                    yesButton {
+                        for (i in cnt - 1 downTo 0 step 1) {
+                            if (checkeditems.get(i)) {
+                                var delVocaInfo = rcvAdapter.getItem(i)
+                                var delVocaName = delVocaInfo?.name
+                                if (delVocaName != null)
+                                    delVoca(delVocaName)
+                            }
+                        }
 
-                       DelVocaList.clearChoices()
-                       finish()
-                   }
-                   noButton { }
-               }.show()
-           }
+                        DelVocaList.clearChoices()
+                        finish()
+                    }
+                    noButton { }
+                }.show()
+            }
         }
 
     }
-    private fun delVoca(delVocaName:String){
+
+    private fun delVoca(delVocaName: String) {
         realm.beginTransaction()
-        val deleteItem = realm.where<VocaDB>().equalTo("name",delVocaName).findFirst()!!
+        val deleteItem = realm.where<VocaDB>().equalTo("name", delVocaName).findFirst()!!
         deleteItem.deleteFromRealm()
-        val deleteItemInner = realm.where<WordDB>().equalTo("voca",delVocaName).findAll()!!
+        val deleteItemInner = realm.where<WordDB>().equalTo("voca", delVocaName).findAll()!!
         deleteItemInner.deleteAllFromRealm()
         realm.commitTransaction()
     }
 
-    fun getCheckedVoca():SparseBooleanArray {
-
-        return  DelVocaList.checkedItemPositions
+    private fun getCheckedVoca(): SparseBooleanArray {
+        return DelVocaList.checkedItemPositions
     }
 
     override fun onBackPressed() {
