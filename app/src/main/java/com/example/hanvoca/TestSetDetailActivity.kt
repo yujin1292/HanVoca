@@ -1,8 +1,8 @@
 package com.example.hanvoca
 
 import android.content.Intent
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import io.realm.Realm
 import kotlinx.android.synthetic.main.activity_test_set_detail.*
 import org.jetbrains.anko.alert

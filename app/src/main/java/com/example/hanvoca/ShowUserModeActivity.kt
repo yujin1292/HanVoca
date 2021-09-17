@@ -3,18 +3,18 @@ package com.example.hanvoca
 import android.content.Intent
 import android.os.Bundle
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import com.example.hanvoca.R
 import io.realm.Realm
 import io.realm.kotlin.where
 import kotlinx.android.synthetic.main.activity_show_user_mode.*
 
-class ShowUserModeActivity : BaseActivity(){
+class ShowUserModeActivity : AppCompatActivity(){
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_show_user_mode)
 
-        actList.add(this)
 
         var wordlist :MutableList<WordDB> = ArrayList()
 
@@ -60,11 +60,6 @@ class ShowUserModeActivity : BaseActivity(){
         exitBtn.setOnClickListener{view->
             finish()
         }
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        actList.remove(this)
     }
 
     fun setPrev(i : Int, wordlist :MutableList<WordDB> ) : Int{

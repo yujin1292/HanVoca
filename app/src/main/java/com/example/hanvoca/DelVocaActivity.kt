@@ -3,6 +3,7 @@ package com.example.hanvoca
 import android.os.Bundle
 import android.util.SparseBooleanArray
 import android.widget.ListView
+import androidx.appcompat.app.AppCompatActivity
 import io.realm.Realm
 import io.realm.kotlin.where
 import kotlinx.android.synthetic.main.activity_del_voca.*
@@ -10,15 +11,13 @@ import org.jetbrains.anko.alert
 import org.jetbrains.anko.noButton
 import org.jetbrains.anko.yesButton
 
-class DelVocaActivity : BaseActivity() {
+class DelVocaActivity : AppCompatActivity() {
 
     var realm: Realm = Realm.getDefaultInstance()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_del_voca)
-
-        actList.add(this)
 
         val realmResults = realm.where<VocaDB>().findAll()
         val rcvAdapter = DelVocaAdapter(realmResults)
@@ -67,13 +66,9 @@ class DelVocaActivity : BaseActivity() {
         return DelVocaList.checkedItemPositions
     }
 
-    override fun onBackPressed() {
-        actFinish()
-    }
 
     override fun onDestroy() {
         super.onDestroy()
-        actList.remove(this)
         realm.close()
     }
 }

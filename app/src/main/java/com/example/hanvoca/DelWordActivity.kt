@@ -3,7 +3,7 @@ package com.example.hanvoca
 import android.os.Bundle
 import android.util.SparseBooleanArray
 import android.widget.ListView
-import com.example.hanvoca.R
+import androidx.appcompat.app.AppCompatActivity
 import io.realm.Realm
 import io.realm.kotlin.where
 import kotlinx.android.synthetic.main.activity_del_word.*
@@ -11,7 +11,7 @@ import kotlinx.android.synthetic.main.activity_del_word.delBtn
 import org.jetbrains.anko.alert
 import org.jetbrains.anko.yesButton
 
-class DelWordActivity : BaseActivity() {
+class DelWordActivity : AppCompatActivity() {
 
     val realm: Realm = Realm.getDefaultInstance()
 
@@ -19,7 +19,6 @@ class DelWordActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_del_word)
 
-        actList.add(this)
 
         var vocaname = intent.getStringExtra("vocaname")
         var realmResults = realm.where<WordDB>().equalTo("voca",vocaname).findAll()
@@ -63,14 +62,13 @@ class DelWordActivity : BaseActivity() {
         deleteItem.deleteFromRealm()
         realm.commitTransaction()
     }
-    fun getCheckedWord(): SparseBooleanArray {
+    private fun getCheckedWord(): SparseBooleanArray {
 
         return  DelWordList.checkedItemPositions
     }
 
     override fun onDestroy() {
         super.onDestroy()
-        actList.remove(this)
         realm.close()
     }
 }

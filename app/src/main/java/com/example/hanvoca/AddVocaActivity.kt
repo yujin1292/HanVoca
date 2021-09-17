@@ -1,6 +1,7 @@
 package com.example.hanvoca
 
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import io.realm.Realm
 import io.realm.kotlin.createObject
 import io.realm.kotlin.where
@@ -8,14 +9,13 @@ import kotlinx.android.synthetic.main.activity_add_voca.*
 import org.jetbrains.anko.alert
 import org.jetbrains.anko.yesButton
 
-class AddVocaActivity : BaseActivity() {
+class AddVocaActivity : AppCompatActivity() {
 
     val realm: Realm = Realm.getDefaultInstance() //인스턴스 얻기
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_voca)
-        actList.add(this)
 
         addBtn.setOnClickListener {
             if (addVocaEditText.text.isEmpty()) {
@@ -45,12 +45,11 @@ class AddVocaActivity : BaseActivity() {
     }
 
     override fun onBackPressed() {
-        actFinish()
+        finish()
     }
 
     override fun onDestroy() {
         super.onDestroy()
-        actList.remove(this)
         realm.close() //인스턴스 해제
     }
 

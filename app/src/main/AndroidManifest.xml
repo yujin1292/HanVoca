@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="com.example.hanvoca">
+        package="com.example.hanvoca">
 
     <application
             android:name=".Hanvoca"
@@ -10,44 +10,29 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
-        <activity android:name=".AddWordActivity">
-        </activity>
-        <activity android:name=".AddVocaActivity">
-        </activity>
-        <activity android:name=".DelWordActivity">
-        </activity>
-        <activity android:name=".TestActivity">
-        </activity>
-        <activity android:name=".TestSetDetailActivity">
-        </activity>
-        <activity android:name=".TestSelectVocaActivity">
-        </activity>
-        <activity android:name=".DelVocaActivity">
-        </activity>
-        <activity android:name=".GetWordActivity">
-        </activity>
-
-        <activity android:name=".SplashActivity"
-                  android:screenOrientation="portrait"
-                  android:theme="@style/SplashTheme">
+        <activity android:name=".AddWordActivity" />
+        <activity android:name=".AddVocaActivity" />
+        <activity android:name=".DelWordActivity" />
+        <activity android:name=".TestActivity" />
+        <activity android:name=".TestSetDetailActivity" />
+        <activity android:name=".TestSelectVocaActivity" />
+        <activity android:name=".DelVocaActivity" />
+        <activity android:name=".GetWordActivity" />
+        <activity
+                android:name=".SplashActivity"
+                android:screenOrientation="portrait"
+                android:theme="@style/SplashTheme">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ShowVocaActivity">
-        </activity>
-        <activity android:name=".SelectModeActivity">
-        </activity>
-        <activity android:name=".ShowBlinkerModeActivity">
-        </activity>
-        <activity android:name=".ShowUserModeActivity">
-        </activity>
-        <activity android:name=".ResultActivity">
-        </activity>
-        <activity android:name=".MainActivity">
-
-        </activity>
+        <activity android:name=".ShowVocaActivity" />
+        <activity android:name=".SelectModeActivity" />
+        <activity android:name=".ShowBlinkerModeActivity" />
+        <activity android:name=".ShowUserModeActivity" />
+        <activity android:name=".ResultActivity" />
+        <activity android:name=".MainActivity" />
     </application>
 
 </manifest>

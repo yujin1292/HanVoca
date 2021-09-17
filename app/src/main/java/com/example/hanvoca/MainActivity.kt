@@ -4,6 +4,7 @@ import android.content.Intent
 import android.content.res.AssetManager
 import android.os.Bundle
 import android.widget.AdapterView
+import androidx.appcompat.app.AppCompatActivity
 import io.realm.Realm
 import io.realm.kotlin.createObject
 import io.realm.kotlin.where
@@ -13,14 +14,13 @@ import org.jetbrains.anko.noButton
 import org.jetbrains.anko.yesButton
 import java.io.InputStream
 
-class MainActivity : BaseActivity() {
+class MainActivity : AppCompatActivity(){
 
     val realm = Realm.getDefaultInstance()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        actList.add(this)
         var load = true
 
         //모든 데이터 가져오기

@@ -1,15 +1,14 @@
 package com.example.hanvoca
 
-import android.content.Intent
 import android.os.Bundle
 import android.widget.TextView
-import com.example.hanvoca.R
+import androidx.appcompat.app.AppCompatActivity
 import io.realm.Realm
 import io.realm.kotlin.where
 import kotlinx.android.synthetic.main.activity_show_blinker_mode.*
 import kotlin.concurrent.timer
 
-class ShowBlinkerModeActivity : BaseActivity() {
+class ShowBlinkerModeActivity : AppCompatActivity() {
 
     var index: Int = 0
     var VocaName: String = " "
@@ -20,9 +19,7 @@ class ShowBlinkerModeActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_show_blinker_mode)
 
-        actList.add(this)
-
-        VocaName = intent.getStringExtra("VocaName")
+        VocaName = intent.getStringExtra("VocaName").toString()
         index = intent.getIntExtra("index", 0)
         numOfWords = intent.getIntExtra("numOfWords", 0)
         textView2.text = VocaName
@@ -56,8 +53,4 @@ class ShowBlinkerModeActivity : BaseActivity() {
         }
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
-        actList.remove(this)
-    }
 }

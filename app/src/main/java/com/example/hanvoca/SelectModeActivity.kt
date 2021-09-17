@@ -2,15 +2,15 @@ package com.example.hanvoca
 
 import android.content.Intent
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_select_mode.*
 
 
-class SelectModeActivity : BaseActivity() {
+class SelectModeActivity : AppCompatActivity(){
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_select_mode)
-        actList.add(this)
 
         var VocaName = intent.getStringExtra("VocaName")
         var index = intent.getIntExtra("index", 0)
@@ -34,8 +34,4 @@ class SelectModeActivity : BaseActivity() {
         }
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
-        actList.remove(this)
-    }
 }

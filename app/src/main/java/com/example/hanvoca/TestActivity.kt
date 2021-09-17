@@ -1,9 +1,10 @@
 package com.example.hanvoca
 
 import android.content.Intent
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.EditText
+import androidx.appcompat.app.AppCompatActivity
 import io.realm.Realm
 import io.realm.kotlin.where
 import kotlinx.android.synthetic.main.activity_test.*
@@ -21,18 +22,20 @@ class TestActivity : AppCompatActivity() {
     var testWordList = listOf<WordDB>()
     var wrongWordList = arrayListOf<String>()
     var numOfWords = 0
-
+    lateinit var inputWord : EditText
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_test)
 
 
-        val vocaName = intent.getStringExtra("vocaname")
+        val vocaName = intent.getStringExtra("vocaname").let{ it ?: ""}
         numOfWords = intent.getIntExtra("numofwords", 0) // 단어장 단어개수
         val numOfQuiz = intent.getIntExtra("numofquiz", 0) //퀴즈 개수
 
         // 해당 단어장의 단어들 가져와서
         testWordList = getTestWordList(vocaName)
+
+        inputWord  = findViewById<EditText>(R.id.inputWord)
 
         setWord()
 

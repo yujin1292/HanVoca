@@ -1,6 +1,7 @@
 package com.example.hanvoca
 
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import io.realm.Realm
 import io.realm.kotlin.createObject
 import io.realm.kotlin.where
@@ -9,7 +10,7 @@ import org.jetbrains.anko.alert
 import org.jetbrains.anko.noButton
 import org.jetbrains.anko.yesButton
 
-class AddWordActivity : BaseActivity() {
+class AddWordActivity : AppCompatActivity() {
 
     val realm: Realm = Realm.getDefaultInstance()
 
@@ -20,9 +21,7 @@ class AddWordActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_word)
-        actList.add(this)
-
-        vocaName = intent.getStringExtra("vocaname")
+        vocaName = intent.getStringExtra("vocaname").toString()
         var valid: Boolean = true
 
         word = wordEditText.text.toString()
@@ -76,7 +75,6 @@ class AddWordActivity : BaseActivity() {
 
     override fun onDestroy() {
         super.onDestroy()
-        actList.remove(this)
         realm.close()
     }
 
